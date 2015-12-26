@@ -1,0 +1,7 @@
+.metadata/
+.settings/
+*.buildpath
+*.DS_Store
+*.project
+*.prefs
+*.xml
