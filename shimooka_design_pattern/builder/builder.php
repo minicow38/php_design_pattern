@@ -1,8 +1,8 @@
 <?php
 /*
  * 目的
- * 1.オブジェクトの生成過程と生成手順を分離する。
- *   生成手順をBuilder Classに隠す。
+ * 1.オブジェクトの生成過程と生成の実装を分離する。
+ *   生成過程はDirector、生成の実装はBuilderが担当する。
  */
 
 /*
@@ -55,6 +55,9 @@ class News
 /*
  * Director Class
  */
+//Directorは生成の過程を担当する。
+//今回はBuilderのメソッドはparse一つだが、
+//実際はBuilderの複数のメソッドを組み合わせて使うことが多いだろう。
 class NewsDirector
 {
     //builderクラスに委譲
@@ -86,6 +89,8 @@ interface NewsBuilder {
 /*
  * Concrete Builder Class
  */
+//Builderは生成の実装を担当する。
+//ProductClassの中身に関する処理は、全てこのクラスが受け持つ。
 class RssNewsBuilder implements NewsBuilder
 {
     public function parse($url)
